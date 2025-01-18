@@ -82,7 +82,7 @@ export default function landingPage() {
             },
             {
               title: "Small",
-              description: "Powered by Your Favourite LLM"
+              description: "Powered by Your GPT-4"
             },
           ].map(({ title, description}) => (
             <div key={title} className="text-center">
