@@ -1,6 +1,23 @@
 import { OpenAI } from "@langchain/openai";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import wxflows from "@wxflows/sdk/langchain";
+import SYSTEM_MESSAGE from "@/constants/systemMessage";
+import{ ChatPromptTemplate, MessagesPlaceholder } from "@langchain/core/prompts"
+import { SystemMessage, trimMessages} from "@langchain/core/messages";
+import {
+    MessagesAnnotation,
+    START,
+    StateGraph
+} from "@langchain/langgraph";
+
+const trimmer = trimMessages({
+    maxTokens: 10,
+    strategy: "last",
+    tokenCounter: (msgs) => msgs.length,
+    includeSystem: true,
+    allowPartial: false,
+    startOn: "human",
+});
 
 // Connect to wxflows
 const toolClient = new wxflows({
@@ -51,11 +68,38 @@ const initializeModel = () => {
                 // }
         // }
     })
-    // }).bind(tools) // Add the bind method once the WXFlows tools are deployed
+    // }).bindTools(tools) // Add the bindTools method after replacing OpenAI with Anthropic Claude LLM
 
     return model;
 };
 
 const createWorkflow = () => {
     const model = initializeModel();
+
+    const stateGraph = new StateGraph(MessagesAnnotation).addNode(
+        "agent",
+        async (state) => {
+            // Create the system message content
+            const systemContent = SYSTEM_MESSAGE;
+
+            // Create the prompt template with system message and messages placeholder
+            const promptTemplate = ChatPromptTemplate.fromMessages([
+                new SystemMessage(systemContent, {
+                    cache_control: { type: "ephemeral" }, // set a cache breakpoint (max number of breakpoints is 4)
+                }),
+                new MessagesPlaceholder("messages"),
+            ]);
+
+            // Trim the messages to manage conversation history
+            const trimmedMessages = await trimmer.invoke(state.messages);
+
+            // Format the prompt with the current messages
+            const prompt = await promptTemplate.invoke({ messages: trimmedMessages });
+
+            // Get response from the model
+            const response = await model.invoke(prompt);
+
+            return { messages: [response] }
+        }
+    )
 }
