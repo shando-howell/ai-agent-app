@@ -2,6 +2,25 @@ import { getConvexClient } from "@/lib/convex";
 import { ChatRequestBody } from "@/lib/types";
 import { auth } from "@clerk/nextjs/server"
 import { NextResponse } from "next/server";
+import { api } from "@/convex/_generated/api";
+import { 
+    StreamMessage, 
+    SSE_DATA_PREFIX, 
+    SSE_LINE_DELIMITER,
+    StreamMessageType 
+} from "@/lib/types";
+
+function sendSSEMessage(
+    writer: WritableStreamDefaultWriter<Uint8Array>,
+    data: StreamMessage
+) {
+    const encoder = new TextEncoder();
+    return writer.write(
+        encoder.encode(
+            `${SSE_DATA_PREFIX}${JSON.stringify(data)}${SSE_LINE_DELIMITER}`
+        )
+    );
+}
 
 export async function POST(req: Request) {
     try {
@@ -30,6 +49,15 @@ export async function POST(req: Request) {
         const startStream = async () => {
             try {
                 // Stream will be implemented here
+
+                // Send initial connection established message
+                await sendSSEMessage(writer, { type: StreamMessageType.Connected });
+
+                // Send user message to Convex
+                await convex.mutation(api.messages.send, {
+                    chatId,
+                    content: newMessage,
+                });
             } catch (error) {
                 console.error('Error in chat API:', error);
                 return NextResponse.json(
