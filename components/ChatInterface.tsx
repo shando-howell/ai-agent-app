@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "./ui/button";
 import { ArrowBigRight } from "lucide-react";
 import { ChatRequestBody } from "@/lib/types";
+import { createSSEParser } from "@/lib/createSSEParser";
 
 interface ChatInterfaceProps {
     chatId: Id<"chats">;
@@ -21,6 +22,8 @@ const ChatInterface = ({ chatId, initialMessages}: ChatInterfaceProps) => {
         input: unknown;
     } | null>(null);
     const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    const processStream = async () => {}
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -74,8 +77,9 @@ const ChatInterface = ({ chatId, initialMessages}: ChatInterfaceProps) => {
             if (!response.body) throw new Error("No response body available");
 
             // ----- Handle the stream -----
-
-
+            // Create SSE parser and stream reader
+            const parser = createSSEParser();
+            const reader = response.body.getReader();
             // ------
         } catch (error) {
             // Handle any errors during streaming
