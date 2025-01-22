@@ -193,13 +193,13 @@ export async function submitQuestion(messages: BaseMessage[], chatId: string) {
     // Run the graph and stream
     const stream = await app.streamEvents(
         {
-            messages: messages
+            messages: cachedMessages,
         },
         {
-            version: 'v2',
+            version: "v2",
             // DEBUG HERE ==========
             configurable: {
-                thread_id: chatId
+                thread_id: chatId,
             },
             // ======================
             streamMode: 'messages',
