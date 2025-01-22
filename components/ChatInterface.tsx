@@ -9,6 +9,7 @@ import { createSSEParser } from "@/lib/createSSEParser";
 import { StreamMessageType } from "@/lib/types";
 import { getConvexClient } from "@/lib/convex";
 import { api } from "@/convex/_generated/api";
+import MessageBubble from "./MessageBubble";
 
 interface ChatInterfaceProps {
     chatId: Id<"chats">;
@@ -179,6 +180,7 @@ const ChatInterface = ({ chatId, initialMessages}: ChatInterfaceProps) => {
                         case StreamMessageType.Error:
                             // Handle error messages from the stream
                             if ("error" in message) {
+                                console.log(message.error)
                                 throw new Error(message.error);
                             }
                         break;
@@ -230,12 +232,36 @@ const ChatInterface = ({ chatId, initialMessages}: ChatInterfaceProps) => {
     return (
         <main className="flex flex-col h-[calc(100vh-theme(spacing.14))]">
             {/* Messages */}
-            <section className="flex-1">
-                <div>
+            <section className="flex-1 overflow-y-auto bg-gray-50 p-2 md:p-0">
+                <div className="max-w-4xl mx-auto p-4 space-y-3">
                     {/* Messages */}
-                    {messages.map((message) => (
-                        <div key={message._id}>{message.content}</div>
+                    {messages?.map((message: Doc<"messages">) => (
+                        <MessageBubble 
+                            key={message._id}
+                            content={message.content}
+                            isUser={message.role === "user"}
+                        />
                     ))}
+
+                    {streamedResponse && <MessageBubble content={streamedResponse} />}
+
+                    {/* Loading indicator */}
+                    {isLoading && !streamedResponse && (
+                        <div className="flex justify-start animate-in fade-in-0">
+                            <div className="rounded-2xl px-4 py-3 bg-white text-gray-900
+                            rounded-bl-none shadow-sm ring-1 ring-inset ring-gray-200">
+                                <div className="flex items-center gap-1.5">
+                                    {[0.3, 0.15, 0].map((delay, i) => (
+                                        <div 
+                                            key={i}
+                                            className="h-1.5 w-1.5 rounded-full bg-gray-400 animate-bounce"
+                                            style={{ animationDelay: `-${delay}$` }}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
                     {/* Last Messages */}
                     <div ref={messagesEndRef} />
