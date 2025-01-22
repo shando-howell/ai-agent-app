@@ -79,7 +79,7 @@ const ChatInterface = ({ chatId, initialMessages}: ChatInterfaceProps) => {
         const trimmedInput = input.trim();
         if (!trimmedInput) return;
 
-        // Reset the US state for new message
+        // Reset the user state for new message
         setInput("");
         setStreamedResponse("");
         setCurrentTool(null);
@@ -180,7 +180,6 @@ const ChatInterface = ({ chatId, initialMessages}: ChatInterfaceProps) => {
                         case StreamMessageType.Error:
                             // Handle error messages from the stream
                             if ("error" in message) {
-                                console.log(message.error)
                                 throw new Error(message.error);
                             }
                         break;
