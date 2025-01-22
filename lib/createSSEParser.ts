@@ -42,5 +42,5 @@ export const createSSEParser = () => {
             .filter((msg): msg is StreamMessage => msg !== null);
     }
 
-    return (parse);
+    return {parse};
 }

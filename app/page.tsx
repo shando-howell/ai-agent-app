@@ -26,7 +26,7 @@ export default function landingPage() {
             actually get things done!
             <br/>
             <span className="text-gray-400 text-sm">
-              Powered by the IBM wXTools and GPT-4.
+              Integrates IBM wXTools
             </span>
           </p>
         </header>
@@ -82,7 +82,7 @@ export default function landingPage() {
             },
             {
               title: "Small",
-              description: "Powered by Your GPT-4"
+              description: "Powered by your favourite LLM"
             },
           ].map(({ title, description}) => (
             <div key={title} className="text-center">
