@@ -24,7 +24,7 @@ const WelcomeMessage = () => {
                 </li>
             </ul>
             <p className="text-gray-600 mt-4 leading-relaxed">
-                Feel free to ask me anything 🤖
+                Feel free to ask me anything.
             </p>
         </div>
     </div>

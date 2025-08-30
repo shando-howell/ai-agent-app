@@ -3,7 +3,6 @@ import { NavigationContext } from "@/lib/NavigationProvider";
 import { useRouter } from "next/navigation";
 import { use } from "react";
 import { Button } from "./ui/button";
-import { TrashIcon } from "@radix-ui/react-icons";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import TimeAgo from "react-timeago";
@@ -53,7 +52,7 @@ function ChatRow({
                             onDelete(chat._id);
                         }}
                     >
-                        <TrashIcon className="h-4 w-4 text-gray-400 hover:text-red-500 transition-colors"/>
+                       ❌ 
                     </Button>
                 </div>
 

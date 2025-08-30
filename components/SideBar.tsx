@@ -3,7 +3,6 @@ import { use } from "react";
 import { Button } from "./ui/button";
 import { NavigationContext } from "@/lib/NavigationProvider";
 import { cn } from "@/lib/utils";
-import { PlusIcon } from "@radix-ui/react-icons";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
@@ -51,7 +50,7 @@ const SideBar = () => {
                         onClick={handleNewChat}
                         className="w-full bg-white hover:bg-gray-50 text-gray-700 border border-gray-200/50 shadow-sm hover:shadow transition-all duration-200"
                     >
-                        <PlusIcon className="mr-2 h-4 w-4" /> New Chat
+                        New Chat
                     </Button>
                 </div>
 
