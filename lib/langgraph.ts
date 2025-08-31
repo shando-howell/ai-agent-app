@@ -1,4 +1,4 @@
-import { OpenAI } from "@langchain/openai";
+import { ChatOpenAI } from "@langchain/openai";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import wxflows from "@wxflows/sdk/langchain";
 import SYSTEM_MESSAGE from "@/constants/systemMessage";
@@ -38,8 +38,8 @@ const tools = await toolClient.lcTools;
 const toolNode = new ToolNode(tools);
 
 const initializeModel = () => {
-    const model = new OpenAI({
-        modelName: "GPT-4 Turbo",
+    const model = new ChatOpenAI({
+        modelName: "gpt-4.1",
         openAIApiKey: process.env.OPENAI_API_KEY,
         temperature: 0.7, // Higher temperature for more creative response
         maxTokens: 4096, // Higher max tokens for longer responses
@@ -75,8 +75,8 @@ const initializeModel = () => {
                 //     }
                 // }
         // }
-    })
-    // }).bindTools(tools) // Add the bindTools method after replacing OpenAI with Anthropic Claude LLM
+    // })
+    }).bindTools(tools) // Add the bindTools method after replacing OpenAI with Anthropic Claude LLM
 
     return model;
 };
