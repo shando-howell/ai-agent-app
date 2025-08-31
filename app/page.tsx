@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export default function landingPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50/50 
+    <main className="min-h-screen bg-gradient-to-b from-blue-100 via-blue-100 to-gray-100 
     flex items-center justify-center">
       {/* Background Pattern */}
-      <div className="absolute inset-0 -z-10 h-full w-full bg-white 
+      <div className="absolute inset-0 -z-10 h-full w-full bg-teal 
       bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient
       (to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:6rem_4rem]" />
 
@@ -16,7 +16,7 @@ export default function landingPage() {
         {/* Hero Content */}
         <header className="space-y-6">
           <h1 className="text-5xl font-bold tracking-tight sm:text-7xl 
-          bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600
+          bg-gradient-to-r from-blue-600 via-teal-600 to-green-600
           bg-clip-text text-transparent">
             AI Agent Assistant
           </h1>
@@ -26,7 +26,7 @@ export default function landingPage() {
             actually get things done!
             <br/>
             <span className="text-gray-400 text-sm">
-              Integrates IBM wXTools
+              Integrates IBM WxTools
             </span>
           </p>
         </header>
@@ -34,14 +34,14 @@ export default function landingPage() {
         <SignedIn>
           <Link href="/dashboard">
             <button className="group relative inline-flex items-center justify-center
-            px-8 py-3.5 text-base font-medium text-white bg-gradient-to-r from-gray-900
-            to-gray-800 rounded-full hover:from-gray-800 hover:to-gray-700
+            px-8 py-3.5 text-base font-medium text-white bg-gradient-to-r from-teal-400
+            to-blue-600 rounded-full hover:from-blue-600 hover:to-teal-400
             tansition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
               Get Started
               <ArrowRight className="ml-2 h-5 w-5 transition-transform 
               group-hover:translate-x-0.5" />
               <div className="absolute inset-0 rounded-full bg-gradient-to-r
-              from-gray-900/20 to-gray-800/20 blur-xl opacity-0 
+              from-blue-900/20 to-teal-800/20 blur-xl opacity-0 
               group-hover:opacity-100 transition-opacity" />
             </button>
           </Link>
@@ -55,14 +55,14 @@ export default function landingPage() {
           >
             <button className="group relative inline-flex items-center
             justify-center px-8 py-3.5 text-base font-medium text-white
-            bg-gradient-to-t from-gray-900 to-gray-800 rounded-full
+            bg-gradient-to-t from-blue-900 to-teal-800 rounded-full
             hover:from-gray-800 hover:to-gray-700 transition-all duration-200
             shadow-lg hover:shadow-xl hover:-translate-y-0.5">
               Sign Up
               <ArrowRight className="ml-2 h-5 w-5 transition-transform 
               group-hover:translate-x-0.5" />
               <div className="absolute inset-0 rounded-full bg-gradient-to-r
-              from-gray-900/20 to-gray-800/20 blur-xl opacity-0 
+              from-blue-900/20 to-teal-800/20 blur-xl opacity-0 
               group-hover:opacity-100 transition-opacity" />
             </button>
           </SignInButton>
@@ -81,7 +81,7 @@ export default function landingPage() {
               description: "Next.js 15, Tailwind CSS, Convex, Clerk"
             },
             {
-              title: "Small",
+              title: "Smart",
               description: "Powered by your favourite LLM"
             },
           ].map(({ title, description}) => (
