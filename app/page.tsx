@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function landingPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-100 via-blue-100 to-gray-100 
+    <main className="min-h-screen bg-gradient-to-b from-blue-100 via-blue-200 to-blue-300 
     flex items-center justify-center">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-teal 

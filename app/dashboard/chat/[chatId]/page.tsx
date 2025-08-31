@@ -22,7 +22,7 @@ async function ChatPage({params}: ChatPageProps) {
     }
 
     try {
-        // Get Convex client and fetch chat and messages
+        // Get Convex client
         const convex = getConvexClient();
 
         // Get messages

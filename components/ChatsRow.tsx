@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import TimeAgo from "react-timeago";
+import { TrashIcon } from "lucide-react";
 
 function ChatRow({
     chat,
@@ -52,7 +53,7 @@ function ChatRow({
                             onDelete(chat._id);
                         }}
                     >
-                       ❌ 
+                       <TrashIcon className="h-4 w-4 text-gray-400 hover:text-red-500 transition-opacity" />
                     </Button>
                 </div>
 

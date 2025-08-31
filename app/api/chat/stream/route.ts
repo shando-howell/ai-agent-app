@@ -52,7 +52,6 @@ export async function POST(req: Request) {
         const startStream = async () => {
             try {
                 // Stream will be implemented here
-
                 // Send initial connection established message
                 await sendSSEMessage(writer, { type: StreamMessageType.Connected });
 
