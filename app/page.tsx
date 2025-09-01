@@ -86,10 +86,10 @@ export default function landingPage() {
             },
           ].map(({ title, description}) => (
             <div key={title} className="text-center">
-              <div className='text-2xl font-semibold text-gray-900'>
+              <div className='text-2xl font-semibold text-gray-600'>
                 {title}
               </div>
-              <div className="text-sm text-gray-600 mt-1">
+              <div className="text-sm text-gray-400 mt-1">
                 {description}
               </div>
             </div>
