@@ -129,8 +129,8 @@ const createWorkflow = () => {
             return { messages: [response] };
         }
     )
-    .addNode('tools', toolNode)
     .addEdge(START, "agent")
+    .addNode('tools', toolNode)
     .addConditionalEdges("agent", shouldContinue)
     .addEdge("tools", "agent");
 
@@ -160,7 +160,7 @@ function addCachingHeaders(messages: BaseMessage[]): BaseMessage[] {
     };
 
     // Cache the last message
-    // console.log("Caching the last message");
+    console.log("Caching the last message");
     addCache(cachedMessages.at(-1)!);
 
     // Find and cache the second-to-last human message
@@ -197,11 +197,9 @@ export async function submitQuestion(messages: BaseMessage[], chatId: string) {
         },
         {
             version: "v2",
-            // DEBUG HERE ==========
             configurable: {
                 thread_id: chatId,
             },
-            // ======================
             streamMode: 'messages',
             runId: chatId
         },

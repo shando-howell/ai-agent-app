@@ -42,32 +42,32 @@ extend type Query {
         { name: "fields", const: "books|book" }
       ]
     )
-    # curl_comments: TC_GraphQL
-    #   @supplies(query: "tc_tools")
-    #   @materializer(
-    #     query: "tc_graphql_tools"
-    #     arguments: [
-    #       { name: "name", const: "curl_comments" }
-    #       { 
-    #         name: "description"
-    #         const: "Retrieve comments from a dummy JSON API. Return a list of comments with user information, including body, likes, postId, and user details (username, fullName)."
-    #       }
-    #       { name: "fields", const: "dummyCommentsQuery" }
-    #     ]
-    #   )
-    # customer_data: TC_GraphQL
-    #   @supplies(query: "tc_tools")
-    #   @materializer(
-    #     query: "tc_graphql_tools"
-    #     arguments: [
-    #       { name: "name", const: "customer_data" }
-    #       {
-    #         name: "description"
-    #         const: "Retrieve customer information including their address and order history. Returns customer details like name, email, address and past orders with shipping information. To search for customer with id: 1, use the curl url followed by /1 i.e. https://api.example.com/customers/1"
-    #       }
-    #       { name: "fields", const: "customerQuery" }
-    #     ]
-    #   )
+    curl_comments: TC_GraphQL
+      @supplies(query: "tc_tools")
+      @materializer(
+        query: "tc_graphql_tools"
+        arguments: [
+          { name: "name", const: "curl_comments" }
+          { 
+            name: "description"
+            const: "Retrieve comments from a dummy JSON API. Return a list of comments with user information, including body, likes, postId, and user details (username, fullName)."
+          }
+          { name: "fields", const: "dummyCommentsQuery" }
+        ]
+      )
+    customer_data: TC_GraphQL
+      @supplies(query: "tc_tools")
+      @materializer(
+        query: "tc_graphql_tools"
+        arguments: [
+          { name: "name", const: "customer_data" }
+          {
+            name: "description"
+            const: "Retrieve customer information including their address and order history. Returns customer details like name, email, address and past orders with shipping information. To search for customer with id: 1, use the curl url followed by /1 i.e. https://api.example.com/customers/1"
+          }
+          { name: "fields", const: "customerQuery" }
+        ]
+      )
 }
 
 extend type Query {

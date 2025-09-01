@@ -3,6 +3,7 @@ import { use } from "react";
 import { Button } from "./ui/button";
 import { UserButton } from "@clerk/clerk-react";
 import { NavigationContext } from "@/lib/NavigationProvider";
+import { Menu } from "lucide-react";
 
 const Header = () => {
     const { setIsMobileNavOpen } = use(NavigationContext);
@@ -19,11 +20,11 @@ const Header = () => {
                         className="md:hidden text-gray-500 hover:text-gray-700
                         hover:bg-gray-100/50"
                     >
-                      💬
+                      <Menu />
                     </Button>
                     <div className="font-semibold bg-gradient-to-r from-gray-800
                     to-gray-600 bg-clip-text text-transparent">
-                        Chat with an AI Agent
+                        Chat with your AI Agent
                     </div>
                 </div>
 
