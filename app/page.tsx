@@ -89,7 +89,7 @@ export default function landingPage() {
               <div className='text-2xl font-semibold text-gray-600'>
                 {title}
               </div>
-              <div className="text-sm text-gray-400 mt-1">
+              <div className="text-sm text-gray-6600 mt-1">
                 {description}
               </div>
             </div>
