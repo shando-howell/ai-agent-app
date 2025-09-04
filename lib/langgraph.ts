@@ -1,4 +1,4 @@
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatAnthropic } from "@langchain/anthropic";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import wxflows from "@wxflows/sdk/langchain";
 import SYSTEM_MESSAGE from "@/constants/systemMessage";
@@ -38,44 +38,41 @@ const tools = await toolClient.lcTools;
 const toolNode = new ToolNode(tools);
 
 const initializeModel = () => {
-    const model = new ChatOpenAI({
-        modelName: "gpt-4.1",
-        openAIApiKey: process.env.OPENAI_API_KEY,
+    const model = new ChatAnthropic({
+        modelName: "claude-sonnet-4-20250514",
+        anthropicApiKey: process.env.ANTHROPIC_API_KEY,
         temperature: 0.7, // Higher temperature for more creative response
         maxTokens: 4096, // Higher max tokens for longer responses
-        streaming: true // Enable streaming for SSE
+        streaming: true, // Enable streaming for SSE
 
         // Prompt Caching using Anthropic API
-        // clientOptions: {
-        //     defaultHeaders: {
-        //         "anthropic-beta": "prompt-caching-2024-07-31",
-        //     },
-        // },
+        clientOptions: {
+            defaultHeaders: {
+                "anthropic-beta": "prompt-caching-2024-07-31",
+            },
+        },
         // callbacks: {
-                // {
-                //     handleLLMStart: async () => {
-                //         // console.log("Starting LLM Call");
-                //     },
-                //     handleLLMEnd: async (output) => {
-                //         console.log("End LLM call", output);
-                //         const usage = output.llmOutput?.usage;
-                //         if (usage) {
-                //             // console.log("Token Usage: ", {
-                //                 input_tokens: usage.input_tokens,
-                //                 output_tokens: usage.output_tokens,
-                //                 total_tokens: usage.input_tokens + usage.output_tokens,
-                //                 cache_creation_input_tokens:
-                //                     usage.cache_creation_input_tokens || 0,
-                //                 cache_read_input_token: usage.cache_read_input_tokens || 0,
-                //             });
-                //         }
-                //     },
-                //     handleLLMNewToken: async (token: string) => {
-                //         console.log("New token:", token);
-                //     }
-                // }
-        // }
-    // })
+        //             handleLLMStart: async () => {
+        //                 console.log("Starting LLM Call");
+        //             },
+        //             handleLLMEnd: async (output) => {
+        //                 console.log("End LLM call", output);
+        //                 const usage = output.llmOutput?.usage;
+        //                 if (usage) {
+        //                     console.log("Token Usage: ", {
+        //                         input_tokens: usage.input_tokens,
+        //                         output_tokens: usage.output_tokens,
+        //                         total_tokens: usage.input_tokens + usage.output_tokens,
+        //                         cache_creation_input_tokens:
+        //                             usage.cache_creation_input_tokens || 0,
+        //                         cache_read_input_token: usage.cache_read_input_tokens || 0,
+        //                     });
+        //                 }
+        //             },
+        //             handleLLMNewToken: async (token: string) => {
+        //                 console.log("New token:", token);
+        //             }
+        //         }
     }).bindTools(tools) // Add the bindTools method after replacing OpenAI with Anthropic Claude LLM
 
     return model;
