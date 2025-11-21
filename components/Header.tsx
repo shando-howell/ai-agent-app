@@ -24,7 +24,7 @@ const Header = () => {
                     </Button>
                     <div className="font-semibold bg-gradient-to-r from-gray-800
                     to-gray-600 bg-clip-text text-transparent">
-                        Chat with your AI Agent
+                        Crystal
                     </div>
                 </div>
 

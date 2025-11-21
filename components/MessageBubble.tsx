@@ -3,6 +3,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useUser } from "@clerk/clerk-react";
 import { BotIcon } from "lucide-react";
+import Image from 'next/image';
 
 interface MessageBubbleProps {
     content: string;
@@ -52,7 +53,7 @@ const MessageBubble = ({ content, isUser }: MessageBubbleProps) => {
                         } flex items-center justify-center shadow-sm`}
                     >
                         {isUser ? (
-                            <Avatar className="h-7 w-7">
+                            <Avatar className="h-9 w-9">
                                 <AvatarImage src={user?.imageUrl} />
                                 <AvatarFallback>
                                     {user?.firstName?.charAt(0)}
@@ -60,7 +61,10 @@ const MessageBubble = ({ content, isUser }: MessageBubbleProps) => {
                                 </AvatarFallback>
                             </Avatar>
                         ) : (
-                            <BotIcon className="h-5 w-5 text-white" />
+                            // <BotIcon className="h-5 w-5 text-white" />
+                            <Avatar className="h-9 w-9">
+                                <AvatarImage src="/images/queen_4.jpg" />
+                            </Avatar>
                         )}
                     </div>
                 </div>
