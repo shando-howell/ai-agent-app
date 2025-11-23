@@ -1,4 +1,6 @@
 import { BotIcon } from "lucide-react"
+import Image from "next/image"
+
 
 const DashboardPage = () => {
   return (
@@ -10,7 +12,7 @@ const DashboardPage = () => {
 
         <div className="relative space-y-6 p-8 text-center">
           <div className="bg-white/60 backdrop-blur-sm shadow-sm ring-1 ring-gray-200/50 rounded-2xl p-6 space-y-4">
-            <div className="bg-gradient-to-b (from-gray-50 to-white rounded-xl p-4 inline-flex">
+            {/* <div className="bg-gradient-to-b (from-gray-50 to-white rounded-xl p-4 inline-flex">
               <BotIcon className="w-12 h-12 text-gray-600" />
             </div>
             <h2 className="text-2xl font-semibold bg-gradient-to-br from-gray-900 to-gray-600 bg-clip-text text-transparent">
@@ -33,7 +35,9 @@ const DashboardPage = () => {
                 <div className="w-2 h-2 rounded-full bg-purple-500"></div>
                   Powerful tools
               </div>
-            </div>
+            </div> */}
+
+            <Image src="/images/queen_1.jpg" alt="Queen" width="500" height="500"/>
           </div>
         </div>
       </div>

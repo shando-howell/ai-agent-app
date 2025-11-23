@@ -3,7 +3,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useUser } from "@clerk/clerk-react";
 import { BotIcon } from "lucide-react";
-import Image from 'next/image';
+
 
 interface MessageBubbleProps {
     content: string;
