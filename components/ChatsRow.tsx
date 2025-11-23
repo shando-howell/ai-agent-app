@@ -36,7 +36,7 @@ function ChatRow({
                     <p className="text-sm text-gray-600 truncate flex-1 font-medium">
                         {lastMessage ? (
                             <>
-                                {lastMessage.role === "user" ? "You: " : "AI: "}
+                                {lastMessage.role === "user" ? "You: " : "Crystal: "}
                                 {lastMessage.content.replace(/\\n/g, "\n")}
                             </>
                         ) : (
