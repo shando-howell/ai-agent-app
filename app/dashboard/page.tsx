@@ -37,7 +37,7 @@ const DashboardPage = () => {
               </div>
             </div> */}
 
-            <Image src="/images/queen_7.jpg" alt="Queen" width="500" height="500"/>
+            <Image src="/images/Jenna_1.jpg" alt="Jenna_4" width="500" height="500"/>
           </div>
         </div>
       </div>

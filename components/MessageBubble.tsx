@@ -63,7 +63,7 @@ const MessageBubble = ({ content, isUser }: MessageBubbleProps) => {
                         ) : (
                             // <BotIcon className="h-5 w-5 text-white" />
                             <Avatar className="h-9 w-9">
-                                <AvatarImage src="/images/queen_4.jpg" />
+                                <AvatarImage src="/images/Jenna_3.jpg" />
                             </Avatar>
                         )}
                     </div>

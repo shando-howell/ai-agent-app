@@ -3,7 +3,7 @@ import ConvexClientProvider from "@/components/ConvexClientProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Crystal",
+  title: "Jenna",
   description: "AI Agent",
 };
 
