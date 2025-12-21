@@ -21,7 +21,7 @@
     "convex": "^1.18.2",
     "langchain": "^0.3.11",
     "lucide-react": "^0.471.2",
-    "next": "15.1.4",
+    "next": "15.1.11",
     "radix-ui": "^1.4.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
